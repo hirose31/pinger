@@ -10,8 +10,13 @@ import (
 	"time"
 
 	"github.com/hirose31/ringbuffer"
+	"github.com/mattn/go-isatty"
 	termbox "github.com/nsf/termbox-go"
 	"github.com/tatsushid/go-fastping"
+)
+
+var (
+	writeFailedLog = isatty.IsTerminal(os.Stderr.Fd())
 )
 
 type response struct {
