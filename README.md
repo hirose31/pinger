@@ -27,8 +27,10 @@ pinger HOSTNAME_OR_IPADDR [HOSTNAME_OR_IPADDR ...]
 
 `pinger` sends ICMP packets using raw socket, so requires root privileges.
 
+You can write failed history to a file by redirecting stderr to a file.
+
 ```
-$ sudo pinger example.com example.net 192.0.2.1 192.0.2.2 192.0.2.3 
+$ sudo pinger example.com example.net 192.0.2.1 192.0.2.2 192.0.2.3 2> pinger.log
 ```
 
 Push `ESC` or `C-c` to exit.
