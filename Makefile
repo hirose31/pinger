@@ -17,7 +17,7 @@ pinger: $(SOURCES)
 	sudo chmod 4755 $@
 
 build:
-	gox $(BUILD_OPTS) -osarch "linux/amd64 darwin/amd64" -output "$(DIST)/$(VERSION)/pinger-$(VERSION)_{{.OS}}_{{.Arch}}/pinger"
+	gox $(BUILD_OPTS) -osarch "linux/amd64 darwin/amd64 windows/amd64 windows/386" -output "$(DIST)/$(VERSION)/pinger-$(VERSION)_{{.OS}}_{{.Arch}}/pinger"
 	# @for bin in $(DIST)/$(VERSION)/pinger-$(VERSION)_*/pinger; do \
 	#   upx $${bin}; \
 	# done
