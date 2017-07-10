@@ -28,4 +28,5 @@ deploy:
   file: "$TRAVIS_BUILD_DIR/dist/*/pkg/*.{tar.gz,zip}"
   on:
     tags: true
+    all_branches: true
     condition: "$TRAVIS_TAG =~ ^v[0-9].*$"
