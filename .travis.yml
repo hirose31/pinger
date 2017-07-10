@@ -15,7 +15,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 before_deploy:
-  - go get -u github.com/laher/goxc
+  - go get -u github.com/mitchellh/gox
   - mkdir -p $TRAVIS_BUILD_DIR/dist
   - make DIST=$TRAVIS_BUILD_DIR/dist package
 
