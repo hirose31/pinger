@@ -3,8 +3,7 @@ language: go
 sudo: false
 
 go:
-  - 1.7.x
-  - master
+  - 1.8.x
 
 before_install:
   - go get -t -v ./...
@@ -14,3 +13,19 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+before_deploy:
+  - go get -u github.com/laher/goxc
+  - mkdir -p $TRAVIS_BUILD_DIR/dist
+  - make DIST=$TRAVIS_BUILD_DIR/dist package
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: Lr+TN9zCT5Lzz20tipard3p2++8L8lX2Rluos0KOSSTq97o2GU3ixPmpEdLIUGMkzirxJUwgM7sUq5Md+B06OIszwoq7TM9KLY0L184uNpUycW2QpQf93HZqiwOWF7slKqEVXMnYHDgEuiPWMAj3CwJffcT/DbMEQzQPfoZRaGeAITRfgY5/+lEuSv2R8RFXOwdQC37JPJyL9VboVMJW0/sMckttLBpoGos72/jo2BxKZgn3QFEeswhybanAeOKiiPJBb4i9xs2V9y1D4ywhfkJIZAH7po03BRaeVJhO6QxRpu5VAH6/x39nvcz6/LX0KEiNUUNNJ4XVms3mDUOJwxXijvfywzFOtoz/tbA8ofHAoCdbGMv8gxvpgNT3opOUeBIBGEuyYgzQZpiUUMYc2PJu7sNVaM4IQ2qTxRHdX/w8vS1ZXJ9XIa6wMs8ebukAv6rxrKkP7k8/8j3tPW8jZ5tocEZ3t9PbpR7r6LOzVubns2TbuPWFhkn0+ATpOALyhI5HRX0THQtyAG5XrZ0N73z8y2FKjozd4QR4ueP3Xx9++vGKMAOQiP37y+Finr2QlXEeKNHVefWGn95jOq1n8s7mzp0pyJLdLtc+4iMCBNVqHMTGVyv9h/rodgMFvHklufmn6YgpzGfCf16y0JNWIT4JCOlVUVD0uCkMd/cWOuM=
+  file_glob: true
+  file: "$TRAVIS_BUILD_DIR/dist/*/pkg/*.{tar.gz,zip}"
+  on:
+    tags: true
+    condition: "$TRAVIS_TAG =~ ^v[0-9].*$"
