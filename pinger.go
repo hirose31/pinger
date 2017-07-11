@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	writeFailedLog = isatty.IsTerminal(os.Stderr.Fd())
+	writeFailedLog = !isatty.IsTerminal(os.Stderr.Fd())
 )
 
 type response struct {
