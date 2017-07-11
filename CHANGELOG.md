@@ -1,3 +1,9 @@
+## v1.2 2017-07-11
+
+BUG FIXES:
+
+- Write failed histories to file correctly by redirecting stderr
+
 ## v1.1 2017-07-10
 
 IMPROVEMENTS:
