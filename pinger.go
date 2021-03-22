@@ -141,7 +141,7 @@ func main() {
 	failedHistory := ringbuffer.NewRingBuffer(histSize)
 
 	drawHeader()
-	termbox.Flush()
+	_ = termbox.Flush()
 
 	keyCh := make(chan termbox.Key)
 	go keyEventLoop(keyCh)
@@ -167,7 +167,7 @@ loop:
 					st = "o"
 					fg = termbox.ColorGreen
 
-					rtt[ipaddr].Push(res.rtt)
+					_ = rtt[ipaddr].Push(res.rtt)
 					rttHist, _ := rtt[ipaddr].Fetch()
 					var rttSum float64
 					for _, t := range rttHist {
@@ -184,7 +184,7 @@ loop:
 					faillog := fmt.Sprintf("%s %-24s",
 						time.Now().Format("2006-01-02 15:04:05.000"),
 						hostname)
-					failedHistory.Push(faillog)
+					_ = failedHistory.Push(faillog)
 					if writeFailedLog {
 						fmt.Fprintln(os.Stderr, faillog)
 					}
@@ -213,7 +213,7 @@ loop:
 				y++
 			}
 
-			termbox.Flush()
+			_ = termbox.Flush()
 		case key := <-keyCh:
 			switch key {
 			case termbox.KeyEsc, termbox.KeyCtrlC:
