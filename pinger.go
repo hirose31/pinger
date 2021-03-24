@@ -6,6 +6,7 @@ import (
 	"math"
 	"net"
 	"os"
+	"runtime"
 	"strings"
 	"time"
 
@@ -15,8 +16,11 @@ import (
 	"github.com/tatsushid/go-fastping"
 )
 
+const version = "1.3.0"
+
 var (
 	writeFailedLog = !isatty.IsTerminal(os.Stderr.Fd())
+	revision       = "HEAD"
 )
 
 type response struct {
@@ -66,7 +70,7 @@ var layout struct {
 }
 
 func drawHeader() {
-	header := fmt.Sprintf("pinger v%s", Version)
+	header := fmt.Sprintf("pinger %s (rev: %s/%s)", version, revision, runtime.Version())
 	drawStr(0, 0, header)
 	header = "type ESC or C-c to exit"
 	drawStr(layout.termW-len(header), 0, header)
