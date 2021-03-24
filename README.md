@@ -1,4 +1,4 @@
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](/LICENSE.md)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](/LICENSE)
 [![test](https://github.com/hirose31/pinger/actions/workflows/test.yml/badge.svg)](https://github.com/hirose31/pinger/actions/workflows/test.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/hirose31/pinger?style=flat-square)](https://goreportcard.com/report/github.com/hirose31/pinger)
 [![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](http://godoc.org/github.com/hirose31/pinger)
