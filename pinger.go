@@ -16,7 +16,7 @@ import (
 	"github.com/tatsushid/go-fastping"
 )
 
-const version = "1.3.1"
+const version = "1.3.2"
 
 var (
 	writeFailedLog = !isatty.IsTerminal(os.Stderr.Fd())
