@@ -27,16 +27,16 @@ show-version: $(GOBIN)/gobump ## show-version
 	@gobump show -r .
 
 $(GOBIN)/gobump:
-	@cd && go get github.com/x-motemen/gobump/cmd/gobump
+	@cd && go install github.com/x-motemen/gobump/cmd/gobump@latest
 
 $(GOBIN)/ghch:
-	@cd && go get github.com/Songmu/ghch/cmd/ghch
+	@cd && go install github.com/Songmu/ghch/cmd/ghch@latest
 
 $(GOBIN)/golint:
-	@cd && go get golang.org/x/lint/golint
+	@cd && go install golang.org/x/lint/golint@latest
 
 $(GOBIN)/gosec:
-	@cd && go get github.com/securego/gosec/v2/cmd/gosec
+	@cd && go install github.com/securego/gosec/v2/cmd/gosec@latest
 
 .PHONY: cross
 cross: $(GOBIN)/goxz ## build for cross platforms
@@ -44,7 +44,7 @@ cross: $(GOBIN)/goxz ## build for cross platforms
 	goxz -arch amd64       -os windows      -n $(BIN) -pv=v$(VERSION) -build-ldflags=$(BUILD_LDFLAGS) -trimpath .
 
 $(GOBIN)/goxz:
-	cd && go get github.com/Songmu/goxz/cmd/goxz
+	cd && go install github.com/Songmu/goxz/cmd/goxz@latest
 
 .PHONY: test
 test: build ## test
@@ -83,4 +83,4 @@ upload: $(GOBIN)/ghr ## upload
 	ghr "v$(VERSION)" goxz
 
 $(GOBIN)/ghr:
-	cd && go get github.com/tcnksm/ghr
+	cd && go install github.com/tcnksm/ghr@latest
