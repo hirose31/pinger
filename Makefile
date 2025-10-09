@@ -99,3 +99,5 @@ $(GOBIN)/goxz:
 	go install github.com/Songmu/goxz/cmd/goxz@latest
 
 
+check-license:
+	go-licenses check ./... --disallowed_types=permissive,forbidden,restricted --include_tests
